@@ -4,4 +4,6 @@ title: About
 permalink: /about/
 ---
 
-My name is Igor. You can find professional information about me on [LinkedIn](https://www.linkedin.com/in/igorferst).
+This blog is powered by [Jekyll](https://jekyllrb.com/) and hosted on [Github Pages](https://pages.github.com/).
+
+You can find professional information about the author on [LinkedIn](https://www.linkedin.com/in/igorferst).
