@@ -3,6 +3,7 @@ layout: post
 title:  "Dockerized iRuby"
 date:   2018-07-19 20:00:00 -0400
 categories: ruby docker jupyter
+permalink: /dockerized-ruby-repl/
 ---
 
 Over the past few months I've been teaching myself Rails in advance of starting a new job
