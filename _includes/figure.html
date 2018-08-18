@@ -1,0 +1,4 @@
+{% capture file_path %}/assets/figures/{{ include.name }}.svg{% endcapture%}
+<br>
+![{{ include.caption }}]({{ file_path | absolute_url }})
+*<center>{{ include.caption }}</center>*
