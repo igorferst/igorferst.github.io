@@ -9,8 +9,12 @@ math: true
 
 ### Motivation
 
-The complexity class $$NP$$ is the set of decision problems that can be
-efficiently solved by a nondeterministic Turing machine (NTM).
+The
+[complexity class $$NP$$](https://en.wikipedia.org/wiki/NP_(complexity))
+is the set of decision problems that can be
+efficiently solved by a
+[nondeterministic Turing machine (NTM)](https://en.wikipedia.org/wiki/Non-deterministic_Turing_machine)
+.
 Attempts to motivate this formal definition usually present $$NP$$ as a
 [metaphor for human creativity](http://www.math.ias.edu/~avi/PUBLICATIONS/MYPAPERS/AW09/AW09.pdf),
 capturing everything from proving theorems to composing symphonies.
@@ -36,7 +40,10 @@ nondeterminism intentionally sidesteps unanswerable questions about how hard pro
 "actually" solved, and instead shifts the focus to the idea that their
 solutions, however they may be produced, are easy to verify.
 This approach is correct in the most meaningful empirical sense because it has yielded
-such a rich and successful theory (NP-completeness, inapproximability via PCPs, etc.).
+such a rich and successful theory
+([NP-completeness](https://en.wikipedia.org/wiki/NP-completeness),
+[inapproximability via PCPs](https://en.wikipedia.org/wiki/PCP_theorem),
+etc.).
 So fixating on the "how" of nondeterminism is admittedly naive.
 
 That said, in the decades since the invention of the Turing machine, we've
@@ -47,9 +54,20 @@ the gap between the abstraction of nondeterminism and the reality of the
 natural world.
 
 Adopting a biologically inspired perspective on computing is not a new idea,
-and has proven fruitful in distributed systems and computer security.
-In this post, we'll explore an attempt to bring this perspective to bear
-on the theory of computation as well.
+and has proven fruitful in
+[distributed systems](http://people.idsia.ch/~luca/eccs05.ver2.pdf),
+[optimization](https://www.amazon.com/Ant-Colony-Optimization-MIT-Press/dp/0262042193),
+and
+[computer security](https://www.cs.unm.edu/~forrest/publications/cacm96-final.pdf)
+(some good general introductions to biologically inspired computing
+can be found
+[here](https://queue.acm.org/detail.cfm?id=1016985)
+and
+[here](https://www.nap.edu/read/11480/chapter/10)
+).
+In this post, we'll attempt to bring this perspective to bear
+on the theory of computation as well by exploring a biologically
+inspired model of nondeterminstic computation.
 
 
 
