@@ -13,8 +13,7 @@ The
 [complexity class $$NP$$](https://en.wikipedia.org/wiki/NP_(complexity))
 is the set of decision problems that can be
 efficiently solved by a
-[nondeterministic Turing machine (NTM)](https://en.wikipedia.org/wiki/Non-deterministic_Turing_machine)
-.
+[nondeterministic Turing machine (NTM)](https://en.wikipedia.org/wiki/Non-deterministic_Turing_machine).
 Attempts to motivate this formal definition usually present $$NP$$ as a
 [metaphor for human creativity](http://www.math.ias.edu/~avi/PUBLICATIONS/MYPAPERS/AW09/AW09.pdf),
 capturing everything from proving theorems to composing symphonies.
@@ -51,7 +50,9 @@ significantly increased our understanding of the mechanics of the human brain
 as well as other miraculously complex natural phenomena. So embracing our
 naivet&eacute; for the moment, we can ask whether it's possible to narrow
 the gap between the abstraction of nondeterminism and the reality of the
-natural world.
+natural world. In other words, can we frame nondeterministic computation
+in a way that aligns slightly better with our emerging understanding of
+the naturally occuring phenomena that it is meant to represent?
 
 Adopting a biologically inspired perspective on computing is not a new idea,
 and has proven fruitful in
@@ -63,10 +64,8 @@ and
 can be found
 [here](https://queue.acm.org/detail.cfm?id=1016985)
 and
-[here](https://www.nap.edu/read/11480/chapter/10)
-).
-In this post, we'll attempt to bring this perspective to bear
-on the theory of computation as well by exploring a biologically
+[here](https://www.nap.edu/read/11480/chapter/10)).
+In this post, we'll explore a biologically
 inspired model of nondeterminstic computation.
 
 
