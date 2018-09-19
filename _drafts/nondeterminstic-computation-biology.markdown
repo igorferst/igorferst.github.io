@@ -69,15 +69,47 @@ In this post, we'll explore a biologically
 inspired model of nondeterminstic computation.
 
 
-
-
-
-
-
-
-
-
 ### Emergent Behavior
+
+Nature runs on [emergence](https://medium.com/sfi-30-foundations-frontiers/emergence-a-unifying-theme-for-21st-century-science-4324ac0f951e);
+complex systems of interacting entities that
+give rise to sophisticated collective behavior.
+Ants form colonies, cells form organisms, and neurons form brains that give rise to conciousness.
+[Many other examples abound](https://www.nature.com/scitable/topicpage/biological-complexity-and-integrative-levels-of-organization-468),
+all the way down to chemical and physical phenonmena and all the way up to the level of human populations.
+More interesting discussions of emergence in biology are
+[here](https://www.ncbi.nlm.nih.gov/pubmed/18166390)
+and
+[here](https://www.wired.com/2008/02/complexity-theo/).
+In the world of computing,
+[Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+is probably the most famous toy model of emergence.
+
+The hallmark of emergence is a system of entities that
+on the individual level
+
+1. are very simple (relative to the complexity of their collective behavior),
+and
+
+2. possess only local knowledge of the system.
+
+Sophisticated emergent behavior is born out of the _interactions_ between
+these simple, myopic actors.
+
+The rest of this post is an attempt to imagine nondeterminsitic computation
+in these terms; as a system of simple,
+myopic computational entities where the "magic" of nondeterminism is not in
+the entities themselves but in their interactions.
+
+
+
+
+
+
+
+
+
+
 
 
 
