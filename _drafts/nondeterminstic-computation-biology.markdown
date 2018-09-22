@@ -24,7 +24,7 @@ verifies that this solution is correct, and that's that (see figure 1).
 
 {%
   include figure.html
-  name="figure_1_naive_ntm"
+  name="figure_1"
   caption="Figure 1. A generic NTM for a problem in NP."
 %}
 
@@ -102,10 +102,19 @@ myopic computational entities where the "magic" of nondeterminism is not in
 the entities themselves but in their interactions.
 
 
+### Biomorphic Nondeterminism
 
+{%
+  include figure.html
+  name="figure_2"
+  caption="Figure 2. A network of interacting deterministic verifiers."
+%}
 
-
-
+{%
+  include figure.html
+  name="figure_3"
+  caption="Figure 3. Biomorphic determinism with a global verifier is equivalent to classical nondeterminism."
+%}
 
 
 
