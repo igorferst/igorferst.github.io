@@ -118,33 +118,20 @@ the entities themselves but in their interactions.
 
 
 
+### Examples
 
 
 
+### Final Thoughts
 
-### Conclusion
+Prior art: Nick's class, actor model
 
-
-### Scratch pad
-
-TODO prior art. biological inspiration. actor model.
+Reflection on Google team dynamics study
 
 
+### Appendix: 3SAT
 
-Now, the truth is we don't _really_ know how a human brain proves a theorem
-or composes a symphony. And more importantly
 
-Of course, we have no idea _how_ this happens, how a human brain proves a theorem or composes a symphony.
-And arguably the point of nondeterminism is to sidestep this ignorance with an abstraction
-that says "it just does". In this traditional treatment of nondeterminism we ignore unanswerable questions
-about how hard problems are "actually" solved, and focus instead on the idea that their
-solutions, however they may be produced, are easy to verify. This approach is correct in the most meaningful
-empirical sense because it has yielded such a rich and successful theory of computational
-complexity (NP-completeness, inapproximability via PCPs, etc.).
 
-In light of this, fixating on the "how" of nondeterminism is naive. But
-embracing this naivet&eacute; for the moment we can ask whether it's possible to
-narrow the gap between the abstraction of nondeterminism and reality. This post is
-an attempt to frame nondeterministic computation in a way that aligns it slightly
-better with our emerging understanding of how the most impressive problem-solving
-in our physical world takes place.
+### ** Scratch pad **
+
