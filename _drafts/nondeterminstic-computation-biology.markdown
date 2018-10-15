@@ -104,11 +104,51 @@ the entities themselves but in their interactions.
 
 ### Biomorphic Nondeterminism
 
+How would we design a nondeterministic Turing machine that exhibits the
+properties described in the previous section? At a high level, it should
+consist of a network of deterministic verifiers that can communicate
+with each other, where each only has access to a small piece of the problem input.
+Instead of nondeterminism being used to produce a solution in a black-box
+fashion as in figure 1, nondeterminism will only be used to decide which
+deterministic verifiers communicate with each other - see figure 2.
+
 {%
   include figure.html
   name="figure_2"
   caption="Figure 2. A network of interacting deterministic verifiers."
 %}
+
+Let's attempt a more formal definition.
+Borrowing language from [this survey](https://queue.acm.org/detail.cfm?id=1016985),
+we'll describe the biologically-inspired formulation sketched above as _biomorphic_.
+
+A biomorphic nondeterministic Turing machine (BNTM) for a [decision problem](https://en.wikipedia.org/wiki/Decision_problem)
+works as follows for a problem instance $$X$$:
+1. The BTNM instantiates a set of verifier nodes $$V = (v_1, v_2, ..., v_n)$$, each
+a deterministic Turning machine, and a set $$E$$ of directed edges on $$V$$;
+we'll call $$(V, E)$$ the _base graph_.
+2. The BTNM distributes a constant-sized piece $$X_i$$ of the problem instance
+to each verifier node $$v_i$$.
+3. The BNTM nondeterministically selects a subset $$E^* \subseteq E$$;
+We'll call $$(V, E^*)$$ the _message graph_.
+4. Each verifier $$v_i$$ performs a computation on $$X_i$$ and sends the
+result to every $$v_j$$ where $$v_i \to v_j$$ is an edge in $$E^*$$.
+5. Each $$v_i$$ performs another computation on all messages it receives,
+and sends the result again along all edges in $$E^*$$ that extend from $$v_i$$.
+6. After repeating step 5 for some number of rounds, each $$v_i$$ performs a final
+computation that determines whether it accepts or rejects. The problem instance
+$$X$$ is accepted if each verifier accepts.
+
+To restate less formally, a BNTM for a decision problem works by instantiating
+a base graph
+whose nodes are deterministic local verifiers that only have knowledge of a
+constant-sized piece of the problem instance. The BNTM nondeterministically
+chooses a subset of edges, and the local verifiers send messages to each other
+along the these edges. The local verifiers perform (deterministic) computations
+on their local piece of the problem instance as well as the messages received
+from other verifiers. After a few rounds of computation and communication,
+each verifier accepts or rejects, and the problem instance is accepted if
+all verifiers accept.
 
 {%
   include figure.html
@@ -118,7 +158,16 @@ the entities themselves but in their interactions.
 
 
 
+
+
+
+notes: nondeterminism isolated; oblivious messages; polynomial size; local knowledge; sync vs async
+
+
+
 ### Examples
+
+
 
 
 
