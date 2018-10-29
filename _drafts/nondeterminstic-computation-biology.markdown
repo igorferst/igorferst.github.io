@@ -11,16 +11,16 @@ math: true
 
 The
 [complexity class $$NP$$](https://en.wikipedia.org/wiki/NP_(complexity))
-is the set of decision problems that can be
+is the set of [decision problems](https://en.wikipedia.org/wiki/Decision_problem) that can be
 efficiently solved by a
 [nondeterministic Turing machine (NTM)](https://en.wikipedia.org/wiki/Non-deterministic_Turing_machine).
 Attempts to motivate this formal definition usually present $$NP$$ as a
 [metaphor for human creativity](http://www.math.ias.edu/~avi/PUBLICATIONS/MYPAPERS/AW09/AW09.pdf),
 capturing everything from proving theorems to composing symphonies.
-But in stark contrast to the flamboyance of this metaphor, the way that problems in $$NP$$
+But in contrast to the flamboyance of this metaphor, the way that problems in $$NP$$
 are "solved" by NTMs is decidedly uninspired - given an instance of a problem in $$NP$$,
 an NTM nondeterministically produces a correct solution,
-verifies that this solution is correct, and that's that (see figure 1).
+then verifies that this solution is correct (see figure 1).
 
 {%
   include figure.html
@@ -31,7 +31,8 @@ verifies that this solution is correct, and that's that (see figure 1).
 If you believe that $$NP$$ represents human creativity this model can feel dissatisfying,
 because it hides that
 creativity within the impenetrable black-box of the nondeterministic
-solution creator. It begs the question - what's going on in there?
+solution creator. The solution creator simply produces the correct solution, and that's that.
+The question of how a correct solution is actually generated has no place.
 
 To be clear, the question of "how" is irrelevant to computational complexity theory,
 where the abstraction of
@@ -46,13 +47,11 @@ etc.).
 So fixating on the "how" of nondeterminism is admittedly naive.
 
 That said, in the decades since the invention of the Turing machine, we've
-significantly increased our understanding of the mechanics of the human brain
-as well as other miraculously complex natural phenomena. So embracing our
+increased our understanding of the mechanics of miraculously complex natural
+phenomena, including the human brain. So embracing our
 naivet&eacute; for the moment, we can ask whether it's possible to narrow
-the gap between the abstraction of nondeterminism and the reality of the
-natural world. In other words, can we frame nondeterministic computation
-in a way that aligns slightly better with our emerging understanding of
-the naturally occuring phenomena that it is meant to represent?
+the gap between the abstraction of nondeterminism and our emerging understanding of the
+natural phenomena it is meant to model.
 
 Adopting a biologically inspired perspective on computing is not a new idea,
 and has proven fruitful in
@@ -77,7 +76,7 @@ give rise to sophisticated collective behavior.
 Ants form colonies, cells form organisms, and neurons form brains that give rise to conciousness.
 [Many other examples abound](https://www.nature.com/scitable/topicpage/biological-complexity-and-integrative-levels-of-organization-468),
 all the way down to chemical and physical phenonmena and all the way up to the level of human populations.
-More interesting discussions of emergence in biology are
+You can find informative descriptions of emergence in biology
 [here](https://www.ncbi.nlm.nih.gov/pubmed/18166390)
 and
 [here](https://www.wired.com/2008/02/complexity-theo/).
@@ -96,7 +95,7 @@ and
 Sophisticated emergent behavior is born out of the _interactions_ between
 these simple, myopic actors.
 
-The rest of this post is an attempt to imagine nondeterminsitic computation
+The rest of this post is an attempt to frame nondeterminsitic computation
 in these terms; as a system of simple,
 myopic computational entities where the "magic" of nondeterminism is not in
 the entities themselves but in their interactions.
@@ -104,10 +103,12 @@ the entities themselves but in their interactions.
 
 ### Biomorphic Nondeterminism
 
-How would we design a nondeterministic Turing machine that exhibits the
-properties described in the previous section? At a high level, it should
-consist of a network of deterministic verifiers that can communicate
-with each other, where each only has access to a small piece of the problem input.
+We want to design a nondeterminstic Turing machine that exhibits the properties described above.
+Imagine that we're solving some [decision problem](https://en.wikipedia.org/wiki/Decision_problem), in other
+words given some input we want our NTM to answer a yes/no question about it by either accepting or rejecting
+the input, respectively.
+At a high level, our NTM will consist of a network of deterministic verifiers that can communicate
+with each other, where each only has access to a small piece of the input.
 Instead of nondeterminism being used to produce a solution in a black-box
 fashion as in figure 1, nondeterminism will only be used to decide which
 deterministic verifiers communicate with each other - see figure 2.
@@ -115,14 +116,14 @@ deterministic verifiers communicate with each other - see figure 2.
 {%
   include figure.html
   name="figure_2"
-  caption="Figure 2. A network of interacting deterministic verifiers."
+  caption="Figure 2. A network of interacting deterministic verifiers. The choice of which verifiers can communicate is made nondeterministically. "
 %}
 
 Let's attempt a more formal definition.
 Borrowing language from [this survey](https://queue.acm.org/detail.cfm?id=1016985),
 we'll describe the biologically-inspired formulation sketched above as _biomorphic_.
 
-A biomorphic nondeterministic Turing machine (BNTM) for a [decision problem](https://en.wikipedia.org/wiki/Decision_problem)
+A biomorphic nondeterministic Turing machine (BNTM) for a decision problem
 works as follows for a problem instance $$X$$:
 1. The BTNM instantiates a set of verifier nodes $$V = (v_1, v_2, ..., v_n)$$, each
 a deterministic Turning machine, and a set $$E$$ of directed edges on $$V$$;
@@ -130,25 +131,32 @@ we'll call $$(V, E)$$ the _base graph_.
 2. The BTNM distributes a constant-sized piece $$X_i$$ of the problem instance
 to each verifier node $$v_i$$.
 3. The BNTM nondeterministically selects a subset $$E^* \subseteq E$$;
-We'll call $$(V, E^*)$$ the _message graph_.
+we'll call $$(V, E^*)$$ the _message graph_.
 4. Each verifier $$v_i$$ performs a computation on $$X_i$$ and sends the
-result to every $$v_j$$ where $$v_i \to v_j$$ is an edge in $$E^*$$.
+result to every $$v_j$$ where $$v_i \to v_j$$ is an edge in the message graph.
 5. Each $$v_i$$ performs another computation on all messages it receives,
-and sends the result again along all edges in $$E^*$$ that extend from $$v_i$$.
+and sends the result again along all edges in the message graph that extend from $$v_i$$.
 6. After repeating step 5 for some number of rounds, each $$v_i$$ performs a final
 computation that determines whether it accepts or rejects. The problem instance
-$$X$$ is accepted if each verifier accepts.
+$$X$$ is accepted if the number of accepting verifiers exceeds a certain threshold.
 
 To restate less formally, a BNTM for a decision problem works by instantiating
 a base graph
 whose nodes are deterministic local verifiers that only have knowledge of a
 constant-sized piece of the problem instance. The BNTM nondeterministically
-chooses a subset of edges, and the local verifiers send messages to each other
-along the these edges. The local verifiers perform (deterministic) computations
+chooses a subset of edges, which defines a subgraph of the base graph
+(the message graph). The local verifiers send messages to each other
+along the the edges in the message graph. The local verifiers perform (deterministic) computations
 on their local piece of the problem instance as well as the messages received
 from other verifiers. After a few rounds of computation and communication,
 each verifier accepts or rejects, and the problem instance is accepted if
-all verifiers accept.
+enough verifiers accept individually.
+
+Before giving some examples of BNTMs, a few comments on the definition.
+
+notes: nondeterminism isolated; oblivious messages; polynomial size; local knowledge; sync vs async; threshold
+
+
 
 {%
   include figure.html
@@ -161,7 +169,6 @@ all verifiers accept.
 
 
 
-notes: nondeterminism isolated; oblivious messages; polynomial size; local knowledge; sync vs async
 
 
 
