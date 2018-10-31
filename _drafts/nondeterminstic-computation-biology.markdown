@@ -119,9 +119,11 @@ deterministic verifiers communicate with each other - see figure 2.
   caption="Figure 2. A network of interacting deterministic verifiers. The choice of which verifiers can communicate is made nondeterministically. "
 %}
 
-Let's attempt a more formal definition.
+Let's attempt a formal definition. It's going to be intentionally vague in some
+places to avoid getting bogged down in technicalities, but see the comments that
+follow for more on the details that we gloss over.
 Borrowing language from [this survey](https://queue.acm.org/detail.cfm?id=1016985),
-we'll describe the biologically-inspired formulation sketched above as _biomorphic_.
+we'll describe our biologically-inspired formulation as _biomorphic_.
 
 A biomorphic nondeterministic Turing machine (BNTM) for a decision problem
 works as follows for a problem instance $$X$$:
@@ -140,12 +142,12 @@ and sends the result again along all edges in the message graph that extend from
 computation that determines whether it accepts or rejects. The problem instance
 $$X$$ is accepted if the number of accepting verifiers exceeds a certain threshold.
 
-To restate less formally, a BNTM for a decision problem works by instantiating
+To summarize the definition, a BNTM for a decision problem works by instantiating
 a base graph
 whose nodes are deterministic local verifiers that only have knowledge of a
 constant-sized piece of the problem instance. The BNTM nondeterministically
 chooses a subset of edges, which defines a subgraph of the base graph
-(the message graph). The local verifiers send messages to each other
+called the message graph. The local verifiers send messages to each other
 along the the edges in the message graph. The local verifiers perform (deterministic) computations
 on their local piece of the problem instance as well as the messages received
 from other verifiers. After a few rounds of computation and communication,
