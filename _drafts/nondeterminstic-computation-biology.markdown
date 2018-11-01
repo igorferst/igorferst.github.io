@@ -20,7 +20,7 @@ capturing everything from proving theorems to composing symphonies.
 But in contrast to the flamboyance of this metaphor, the way that problems in $$NP$$
 are "solved" by NTMs is decidedly uninspired - given an instance of a problem in $$NP$$,
 an NTM nondeterministically produces a correct solution,
-then verifies that this solution is correct (see figure 1).
+then verifies that this solution is correct (see Figure 1).
 
 {%
   include figure.html
@@ -110,8 +110,8 @@ the input, respectively.
 At a high level, our NTM will consist of a network of deterministic verifiers that can communicate
 with each other, where each only has access to a small piece of the input.
 Instead of nondeterminism being used to produce a solution in a black-box
-fashion as in figure 1, nondeterminism will only be used to decide which
-deterministic verifiers communicate with each other - see figure 2.
+fashion as in Figure 1, nondeterminism will only be used to decide which
+deterministic verifiers communicate with each other - see Figure 2.
 
 {%
   include figure.html
@@ -156,14 +156,50 @@ enough verifiers accept individually.
 
 Before giving some examples of BNTMs, a few comments on the definition.
 
-notes: nondeterminism isolated; oblivious messages; polynomial size; local knowledge; sync vs async; threshold
-
-
+* It will go without saying for the rest of this post, but we're only interested
+in tractable computation here, so every quantity in the definition is
+polynomial in the instance size: the number of verifiers, the number of rounds,
+and the length of the computations performed by the verifiers (which implies
+a polynomial bound on verifier message size).
+* All computations in this model are deterministic - the nondeterminism is isolated
+to the selection of the communication channels between verifiers. Yet we will
+soon see that this limited notion of nondeterminism suffices to capture $$NP$$.
+* Verifiers send messages obliviously - a verifier always sends
+the same message to every out-neighbor in the message graph. It cannot
+send different messages to different out-neighbors, nor can it choose to send a message to
+some out-neighbors and not others.
+* The fact that each verifier only has local knowledge of the problem instance
+is critical to the definition. If we allow a verifier $$v^*$$ that has knowledge
+of the full problem instance, our model is equivalent to the classical model
+of nondeterminism in Figure 1. To see why, note that many problems in $$NP$$
+can be phrased as subset selection - given a set $$S$$ of size $$n$$, does there
+exist $$S' \subseteq S$$ with a certain desirable property?
+In this case, one can build a trivial BNTM that has $$n$$ verifier nodes
+$$v_1, ..., v_n$$ with no knowledge of the problem instance, a master verifier
+$$v^*$$ with global knowledge, and a base graph with an edge $$v_i \to v^*$$
+for every $$i$$; see Figure 3. After the message graph is chosen, each $$v_i$$ sends
+a message consisting of its index $$i$$. The set of indices received by $$v^*$$
+defines $$S'$$, and $$v^*$$ can verify whether this $$S'$$
+possesses the desired property since it has global knowledge of the problem instance.
+This is equivalent to the classical model
+in Figure 1, i.e. a solution created nondeterministically and passed to a
+deterministic verifier.
+* The definition does not specify whether message passing is synchronous
+or asynchronous. In other words, are all messages sent simultaneously and
+received simultaneously, or is it possible for some messages to reach their
+destination before others? This distinction is not important to the definition.
+Usually synchronous communication is easier to reason about, but allowing
+asynchronous communication wouldn't really change things (though in this case
+one must of course require that message delays are polynomially bounded).
+* The acceptance threshold, i.e. the number of verifiers required to accept
+for the BNTM to accept, can vary from problem to problem. Below we'll see an
+example where all verifiers must accept for the problem instance to be
+accepted, and another example where only a single verifier suffices.
 
 {%
   include figure.html
   name="figure_3"
-  caption="Figure 3. Biomorphic determinism with a global verifier is equivalent to classical nondeterminism."
+  caption="Figure 3. Biomorphic nondeterminism with a global verifier is equivalent to classical nondeterminism."
 %}
 
 
@@ -183,6 +219,8 @@ notes: nondeterminism isolated; oblivious messages; polynomial size; local knowl
 ### Final Thoughts
 
 Prior art: Nick's class, actor model
+
+long summary quote from biomorphic survey
 
 Reflection on Google team dynamics study
 
