@@ -203,16 +203,30 @@ accepted, and another example where only a single verifier suffices.
 %}
 
 
-
-
-
-
-
-
-
 ### Examples
 
+Let's build BNTMs for a couple of well-known decision problems.
 
+#### Hamiltonian cycle
+
+The [Hamiltonian cycle problem](https://en.wikipedia.org/wiki/Hamiltonian_path_problem) (we'll use the
+shorthand $$HAM$$)
+asks whether a given graph contains a Hamiltonian cycle, i.e. a cycle that visits every vertex exactly once.
+Constructing a BNTM for $$HAM$$ is straightforward because the base graph is essentially identical
+to the graph that defines the problem instance.
+
+Specifically, given a problem instance in the form of an input graph $$G_{in}$$
+
+
+
+
+
+#### Knapsack
+
+
+
+
+### BNTMs capture $$NP$$
 
 
 
@@ -221,6 +235,8 @@ accepted, and another example where only a single verifier suffices.
 Prior art: Nick's class, actor model
 
 long summary quote from biomorphic survey
+
+example is lacking - what's stopping verifiers from sending their part of the instance to one?
 
 Reflection on Google team dynamics study
 
